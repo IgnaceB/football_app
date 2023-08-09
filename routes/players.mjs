@@ -7,17 +7,21 @@ const playerColl=client.db('football').collection('player')
 app.set('view engine','ejs')
 
 
-router.get('/',(req,res)=>{
+router.get('/:page',(req,res)=>{
 
 	res.render('player.ejs')
 })
 
-router.post('/',async (req,res)=>{
+router.post('/:page',async (req,res)=>{
 	const whoToShow=req.params.page*50
 	const whoToSkip=(req.params.page-1)*50
-	console.log(whoToShow)
-	const allPlayer= await playerColl.find({}).limit(50).toArray()
-	console.log(allPlayer)
+	console.log(`whoToShow : ${whoToShow}`)
+	console.log(`whoToSkip : ${whoToSkip}`)
+
+
+	const allPlayer= await playerColl.find({}).sort({name:1}).limit(whoToShow).skip(whoToSkip).toArray()
+	console.log(`allPlayers ${JSON.stringify(allPlayer,null,2)}`)
+
 	res.send(allPlayer)
 
 })
