@@ -1,4 +1,12 @@
 p{
 
-	color:white;
+	color:black;
+	border : solid 1px red;
+}
+body{
+	background: red;
+}
+
+.test{
+	background: green;
 }

@@ -8,4 +8,6 @@ const MongoClient = mongodb.MongoClient
 const client = new MongoClient(process.env.uri, { 
     useNewUrlParser: true,});
 
+
+
 export default client

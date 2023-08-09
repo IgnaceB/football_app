@@ -24,10 +24,10 @@ const scrap = async () =>{
 
 		
 		const $=load(request.data)
-/*		const html= $('tbody>tr')*/
+
 		const html= $('[data-playerid]')
 
-/*		console.log($(html[0].children[1].children[0].children[0]))*/
+
 
 		for (let i = 0 ; i<html.length;i++){
 			let thisAttribute=$(html[i])
@@ -59,28 +59,14 @@ const scrap = async () =>{
 				console.log(`${thisData.name.toString()} added to database`)
 			}
 
-/*			await playerColl.insertOne(thisData)
-			console.log(`data pushed ${thisData.name}`)*/
-		}
-	/*		if (thisAttribute.data-playerid!=undefined){
-						console.log(thisAttribute)
-					arrayData.push($html[i])
-			}*/
 
 	}
 	catch(error){
 		console.error(error)
 	}
-/*	console.log(arrayData)*/
+
 
 }
-/*	fs.writeFile('./data.json',JSON.stringify(arrayData),(err)=>{
-			if (err){
-				console.log(err)
-			}
-			else {
-				console.log("data written")
-			}
-		})*/
+
 }
 scrap()
