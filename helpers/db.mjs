@@ -5,9 +5,12 @@ dotenv.config()
 import mongodb from 'mongodb'
 const MongoClient = mongodb.MongoClient
 
-const client = new MongoClient(process.env.uri, { 
+
+
+
+export const client = new MongoClient(process.env.uri, { 
     useNewUrlParser: true,});
 
 
 
-export default client
+export default client 
