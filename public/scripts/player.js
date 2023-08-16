@@ -8,22 +8,22 @@ const getAllPlayers =async ()=>{
 
 	})
 	const data=await res.json()
-	console.log(`data ${data}`)
+
 	return data
 }
 
 const introduceData=async()=>{
 	let allPlayers = await getAllPlayers()
-	console.log(`allPlayers ${JSON.stringify(allPlayers,null,2)}`)
+
 	allPlayers.forEach((element)=>{
-/*		console.log(element)*/
+
 		const newPlayer = document.createElement('p')
 		const newContainer=document.createElement('a')
 		const newImage=document.createElement('img')
 		newImage.src=element.picture
 		newPlayer.innerText=element.name
 		newContainer.href=window.location.href.substring(0,window.location.href.lastIndexOf('/'))+'/thisPlayer/'+element._id
-		console.log(window.location.href.substring(0,window.location.href.lastIndexOf('/'))+'/thisPlayer/'+element._id)
+
 		newContainer.target='blank'
 		newContainer.appendChild(newPlayer)
 		document.getElementById('test').appendChild(newImage)
@@ -37,3 +37,28 @@ const introduceData=async()=>{
 
 
 introduceData()
+
+const previous=document.getElementById('previous')
+const next=document.getElementById('next')
+const actualPage=window.location.href
+
+if (actualPage.substring(actualPage.lastIndexOf('=')+1)>1){
+previous.addEventListener('click',(event)=>{
+
+	const reduceUrl=actualPage.substring(0,actualPage.lastIndexOf('='))
+	const page=actualPage.substring(actualPage.lastIndexOf('=')+1)
+	const newPage=page-1
+	window.location.replace(reduceUrl+'='+newPage)
+
+})}
+else {
+	previous.style.display='none'	
+}
+next.addEventListener('click',(event)=>{
+	const actualPage=window.location.href
+	const reduceUrl=actualPage.substring(0,actualPage.lastIndexOf('='))
+	const page=actualPage.substring(actualPage.lastIndexOf('=')+1)
+	const newPage=parseInt(page)+1
+	window.location.replace(reduceUrl+'='+newPage)
+
+})

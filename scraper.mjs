@@ -33,7 +33,7 @@ const scrap = async () =>{
 			let thisAttribute=$(html[i])
 			const content = thisAttribute
 			thisData={
-				name : $(html[i].children[3]).text().trim(),
+				name: $(html[i].children[3]).text().trim(),
 				ovrpot : $(html[i].children[2]).text().trim(),
 				country : $(html[i].children[1]).find('img').attr('alt'),
 				position : { first : $(html[i]).find('.link-position').attr('title'),
